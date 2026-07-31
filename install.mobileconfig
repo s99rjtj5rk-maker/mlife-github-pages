@@ -22,13 +22,13 @@
 			<key>PayloadType</key>
 			<string>com.apple.webClip.managed</string>
 			<key>PayloadUUID</key>
-			<string>D43C2D1A-DF53-405F-8FBC-BDEDB5F313AE</string>
+			<string>AE9779DF-792D-4B0F-8C10-01A009625FA4</string>
 			<key>PayloadVersion</key>
 			<integer>1</integer>
 			<key>Precomposed</key>
 			<true/>
 			<key>URL</key>
-			<string>https://webview.e2b.bj3.sandbox.cloudstudio.club/?x-cs-sandbox-id=92b02a17c7a64294a1c36a9d71f140f8&amp;x-cs-sandbox-port=8000</string>
+			<string>https://s99rjtj5rk-maker.github.io/mlife-github-pages/</string>
 		</dict>
 	</array>
 	<key>PayloadDescription</key>
@@ -44,7 +44,7 @@
 	<key>PayloadType</key>
 	<string>Configuration</string>
 	<key>PayloadUUID</key>
-	<string>07149177-77D5-4951-BD70-9E651280BDBC</string>
+	<string>E549B6F6-23D6-4389-8D63-2E4848398621</string>
 	<key>PayloadVersion</key>
 	<integer>1</integer>
 </dict>
