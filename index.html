@@ -272,9 +272,7 @@ body{overflow:hidden}
 <div class="sidebar" id="sidebar">
   <div class="side-tab on" data-target="card-home"><div class="ico">🏠</div>首页</div>
   <div class="side-tab" data-target="card-todo"><div class="ico">📝</div>待办</div>
-  <div class="side-tab" data-target="card-fund"><div class="ico">🔥</div>今日热点</div>
   <div class="side-tab" data-target="card-fortune"><div class="ico">🔮</div>运势</div>
-  <div class="side-tab" data-target="card-money"><div class="ico">💰</div>记账</div>
   <div class="side-tab" data-target="card-save"><div class="ico">⭐</div>储蓄</div>
   <div class="side-tab" data-target="card-lend"><div class="ico">🤝</div>借还</div>
   <div class="side-tab" data-target="card-diary"><div class="ico">📓</div>小记</div>
@@ -304,20 +302,10 @@ body{overflow:hidden}
         <div class="name">待办清单</div>
         <div class="brief" id="homeTodo">暂无待办</div>
       </div>
-      <div class="home-tile tile-lavender" data-goto="card-fund">
-        <div class="icon">🔥</div>
-        <div class="name">今日热点</div>
-        <div class="brief" id="homeFund">热点资讯 & 爆款拆解</div>
-      </div>
       <div class="home-tile tile-mint" data-goto="card-fortune">
         <div class="icon">🔮</div>
         <div class="name">今日运势</div>
         <div class="brief" id="homeFortune">金牛座 ♉</div>
-      </div>
-      <div class="home-tile tile-blue" data-goto="card-money">
-        <div class="icon">💰</div>
-        <div class="name">记账本</div>
-        <div class="brief" id="homeMoney">总资产 ¥0</div>
       </div>
       <div class="home-tile tile-coral" data-goto="card-save">
         <div class="icon">⭐</div>
@@ -359,24 +347,6 @@ body{overflow:hidden}
     </div>
   </div>
 
-  <!-- 3 今日热点 -->
-  <div class="card" id="card-fund" style="display:none">
-    <div class="card-head">
-      <div class="card-title"><div class="ico ico-lavender">🔥</div>今日热点</div>
-      <div class="card-action" id="fundRefresh">🔄 刷新</div>
-    </div>
-    <!-- 股票基金 -->
-    <div class="section-title">📈 股票基金 · 市场热点</div>
-    <div class="hot-list" id="hotSectors"></div>
-    <div class="section-title">📰 影响基金的时事</div>
-    <div id="fundNews" style="max-height:200px;overflow-y:auto"></div>
-    <!-- 小红书爆款 -->
-    <div class="section-title">🔥 小红书爆款拆解</div>
-    <div id="xhsHot" style="max-height:300px;overflow-y:auto">
-      <div style="font-size:12px;color:var(--text-faint);padding:12px;text-align:center">⏳ 正在获取小红书爆款...</div>
-    </div>
-  </div>
-
   <!-- 4 运势 -->
   <div class="card" id="card-fortune" style="display:none">
     <div class="card-head">
@@ -400,37 +370,6 @@ body{overflow:hidden}
     <div class="fortune-soup" id="fortuneSoup"></div>
   </div>
 
-  <!-- 4 记账 -->
-  <div class="card" id="card-money" style="display:none">
-    <div class="card-head">
-      <div class="card-title"><div class="ico ico-blue">💰</div>记账</div>
-    </div>
-    <!-- 3个账户：工商银行/支付宝/微信 -->
-    <div class="section-title">💳 我的账户</div>
-    <div class="balance-grid" id="balanceGrid"></div>
-    <!-- 总资产 -->
-    <div class="total" style="margin-top:8px">
-      <div><div class="lbl">总资产</div><div class="val" id="totalAsset">¥0</div></div>
-      <div style="text-align:right"><div class="lbl">本月支出</div><div class="val" id="monthSpent">¥0</div></div>
-    </div>
-    <!-- 每日记账 -->
-    <div class="section-title">📝 每日记账</div>
-    <div class="expense-form">
-      <input type="number" id="expAmount" placeholder="金额" style="grid-column:span 2"/>
-      <input type="text" id="expNote" placeholder="备注（如：午餐）" style="grid-column:span 2"/>
-      <button id="expAdd">+ 记一笔</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0">
-      <div style="font-size:13px;color:var(--text-soft)">📋 <span id="todayDateLabel"></span> · 今日 <b style="color:var(--danger)" id="todaySpent">¥0</b></div>
-    </div>
-    <div class="expense-list" id="expenseList"></div>
-    <div style="text-align:center;margin-top:8px">
-      <span style="font-size:11px;color:var(--text-faint)">📊 本月合计：</span>
-      <span style="font-size:13px;font-weight:600;color:var(--danger)" id="monthTotal">¥0</span>
-    </div>
-  </div>
-
-  <!-- 5 英语 -->
   <!-- 5 储蓄计划 -->
   <div class="card card-save" id="card-save" style="display:none">
     <div class="save-head">
@@ -583,9 +522,6 @@ $$('.side-tab').forEach(t=>t.onclick=()=>switchTab(t.dataset.target));
 function updateHome(){
   const undone=todos.filter(t=>!t.done).length;
   $('#homeTodo').textContent=undone?`${undone} 项待完成`:'暂无待办';
-  $('#homeFund').textContent='实时热点 & 爆款拆解 🔥';
-  const total=accounts.reduce((s,a)=>s+a.balance,0);
-  $('#homeMoney').textContent=fmtMoney(total);
   const dateKey=today();
   // 储蓄计划摘要
   try{
@@ -633,154 +569,6 @@ $('#todoClear').onclick=()=>{const b=todos.length;todos=todos.filter(t=>!t.done)
 renderTodos();
 
 
-/* ========== 3. 今日热点 ========== */
-const FUND_BASE='https://webview.e2b.bj3.sandbox.cloudstudio.club';
-const FUND_QS='x-cs-sandbox-id=92b02a17c7a64294a1c36a9d71f140f8&x-cs-sandbox-port=8000';
-function apiUrl(path){return `${FUND_BASE}${path}?${FUND_QS}`;}
-
-// 小红书爆款数据 - 从后端API动态加载
-let xhsHotData=[];
-let xhsDaySeed='';
-
-async function fetchXhsHot(){
-  try{
-    const resp=await fetch(apiUrl('/api/xhs/hot'));
-    const data=await resp.json();
-    xhsHotData=data.feeds||[];
-    console.log('[XHS] 加载了 '+xhsHotData.length+' 条爆款数据, 更新时间: '+data.time);
-  }catch(e){
-    console.log('[XHS] API请求失败，使用备用数据',e);
-    // 备用静态数据确保永远有内容展示
-    xhsHotData=[
-      {title:'打工人存钱法爆了！月薪5k也能攒下10w',author:'搞钱学姐',likes:'12.3w',tag:'理财',logic:'情绪共鸣+具体方法论+可视化数字，精准命中打工人焦虑',detail:'📌 内容拆解\n\n这个帖子之所以爆，是因为精准命中三个情绪点：\n\n① "月薪5k"——大多数打工人的真实收入，制造强烈身份认同\n② "攒下10w"——具体可量化的目标，让人觉得可行而非空想\n③ "存钱法"——提供实操方案，不是空洞的鸡汤\n\n🔑 爆款公式\n痛点共鸣 → 可复制方法 → 成果展示\n\n🎯 可复用思路\n找准一个具体数字锚点+可执行步骤+真实成果，比泛泛而谈的理财内容传播力强10倍'},
-      {title:'30岁之前一定要懂的5个理财真相',author:'财经林同学',likes:'15.6w',tag:'理财',logic:'年龄锚点+反常识观点+清单体，制造认知落差引发转发',detail:'📌 内容拆解\n\n① 30岁锚点——精准命中25-35岁核心用户群\n② 5个真相——数量刚好\n③ "一定要懂"——制造紧迫感和信息差\n\n🔑 五个真相：\n1. 存钱比投资重要100倍\n2. 基金定投不是稳赚不赔\n3. 买房不一定是好投资\n4. 工资涨幅永远跑不赢通胀\n5. 你的时间才是最值钱的资产\n\n🎯 可复用思路\n列清单+反常识观点+制造争议，争议就是流量引擎'},
-      {title:'我用AI做副业，一个月赚了3万',author:'AI搞钱日记',likes:'22.1w',tag:'副业',logic:'AI热点+具体收入数字+实操截图，满足用户对副业的幻想',detail:'📌 内容拆解\n\n① AI——当前最大流量密码\n② 副业——打工人永恒刚需\n③ 3万——具体且可信的数字\n\n🎯 可复用思路\n风口+搞钱+教程，这个三角组合在小红书永远有效'},
-      {title:'千万别再这样花钱了！6个消费陷阱',author:'省钱大王',likes:'11.2w',tag:'消费',logic:'警告式标题+反面教材+避坑指南，每条都是社交货币',detail:'📌 内容拆解\n\n① 满减凑单——你以为省了，其实多花了\n② 会员自动续费——每月偷偷扣款的"订阅刺客"\n③ 直播间限时秒杀——制造稀缺感让你冲动消费\n④ 9.9包邮小物件——单价低但买一堆\n⑤ 奶茶咖啡日常——一天一杯，一年就是一部手机\n⑥ 先用后付——花钱无痛感，月底傻眼\n\n🎯 可复用思路\n列举日常但被忽视的消费习惯，让用户产生觉醒感'},
-    ];
-  }
-}
-
-async function fetchSectors(){
-  try{
-    const resp=await fetch(apiUrl('/api/fund/hotsectors'));
-    const data=await resp.json();
-    window._fundSectors=data.sectors||[];
-  }catch(e){console.log('板块API请求失败',e)}
-}
-async function fetchNews(){
-  try{
-    const resp=await fetch(apiUrl('/api/fund/news'));
-    const data=await resp.json();
-    window._fundNews=data.news||[];
-  }catch(e){console.log('资讯API请求失败',e)}
-}
-
-function renderFund(){
-  // 1. 热门板块
-  const hs=$('#hotSectors');hs.innerHTML='';
-  const sectorsData=window._fundSectors||[];
-  if(sectorsData.length>0){
-    sectorsData.forEach((s,i)=>{
-      const div=document.createElement('div');
-      div.className='hot-item';
-      const rankIcon=i===0?'🥇':i===1?'🥈':i===2?'🥉':'';
-      div.innerHTML=`
-        <div class="name">${rankIcon} ${s.name}<div style="font-size:9px;color:var(--text-faint)">${s.desc||''}</div></div>
-        <div class="pct ${s.pct>=0?'up':'down'}">${fmtPct(s.pct)}</div>`;
-      hs.appendChild(div);
-    });
-  }else{
-    hs.innerHTML='<div style="font-size:12px;color:var(--text-faint);padding:8px">⏳ 正在加载实时板块数据...</div>';
-  }
-
-  // 2. 基金时事
-  const news=$('#fundNews');news.innerHTML='';
-  const newsData=window._fundNews||[];
-  if(newsData.length>0){
-    const tagColors=['#F4A7B9','#B8D4C8','#C4B5D4','#FCC8B2','#A8C8E8','#FDE8A0'];
-    newsData.forEach((n,i)=>{
-      const div=document.createElement('div');
-      const color=tagColors[i%tagColors.length];
-      div.style.cssText=`display:flex;align-items:flex-start;gap:8px;padding:8px;margin-bottom:6px;background:#FFFAFC;border-radius:8px;cursor:pointer`;
-      const tag=n.time?n.time.slice(5,10):'资讯';
-      div.innerHTML=`
-        <span style="background:${color};color:#fff;font-size:10px;padding:1px 6px;border-radius:4px;white-space:nowrap;margin-top:2px">${tag}</span>
-        <div style="flex:1">
-          <a href="${n.url||'#'}" target="_blank" style="font-size:12px;line-height:1.5;color:var(--text);text-decoration:none">${n.title}</a>
-          <div style="font-size:10px;color:var(--text-faint);margin-top:2px">${n.time}</div>
-        </div>`;
-      news.appendChild(div);
-    });
-  }else{
-    news.innerHTML='<div style="font-size:12px;color:var(--text-faint);padding:8px">⏳ 正在获取最新时事...</div>';
-  }
-
-  // 3. 小红书爆款拆解
-  xhsDaySeed=today().replace(/-/g,'');
-  fetchXhsHot().then(()=>renderXhsHot());
-}
-
-function renderXhsHot(){
-  const xhs=$('#xhsHot');xhs.innerHTML='';
-  const sorted=[...xhsHotData].sort((a,b)=>{
-    return ((a.title+b.title+xhsDaySeed).split('').reduce((s,c)=>s+c.charCodeAt(0),0)%100)/100-0.5;
-  });
-  sorted.forEach((item,i)=>{
-    const div=document.createElement('div');
-    div.style.cssText='background:#FFF5F7;border-radius:12px;padding:12px;margin-bottom:10px;border-left:3px solid #F4A7B9;cursor:pointer';
-    const colors=['#F4A7B9','#B8D4C8','#C4B5D4','#FCC8B2'];
-    const tagColor=colors[i%colors.length];
-    div.innerHTML=`
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-        <span style="background:${tagColor};color:#fff;font-size:10px;padding:2px 8px;border-radius:10px">${item.tag}</span>
-        <span style="font-size:11px;color:var(--text-faint)">👤 ${item.author}</span>
-        <span style="font-size:11px;color:#E07A5F;margin-left:auto">❤️ ${item.likes}</span>
-      </div>
-      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;line-height:1.5">${item.title}</div>
-      <div style="background:#FEF0E9;border-radius:8px;padding:8px 10px">
-        <div style="font-size:10px;color:#C47A5A;margin-bottom:3px">💡 爆款逻辑拆解</div>
-        <div style="font-size:11px;color:var(--text);line-height:1.6">${item.logic}</div>
-      </div>
-      <div style="font-size:10px;color:var(--lavender-dark);text-align:right;margin-top:6px">👉 点击查看完整拆解</div>`;
-    div.onclick=()=>showXhsDetail(item);
-    xhs.appendChild(div);
-  });
-}
-
-function showXhsDetail(item){
-  const overlay=document.createElement('div');
-  overlay.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.45);z-index:999;display:flex;align-items:center;justify-content:center';
-  const panel=document.createElement('div');
-  panel.style.cssText='background:#fff;border-radius:16px;padding:20px;width:calc(100% - 32px);max-width:400px;max-height:80vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.15)';
-  panel.innerHTML=`
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-      <span style="background:#F4A7B9;color:#fff;font-size:11px;padding:3px 10px;border-radius:10px">${item.tag}</span>
-      <span style="font-size:12px;color:var(--text-faint)">👤 ${item.author}</span>
-      <span style="font-size:12px;color:#E07A5F;margin-left:auto">❤️ ${item.likes}</span>
-    </div>
-    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:16px;line-height:1.5">${item.title}</div>
-    <div style="font-size:12px;color:var(--text);line-height:1.8;white-space:pre-line">${item.detail||item.logic}</div>
-    <div style="margin-top:16px;text-align:center">
-      <button id="xhsDetailClose" style="padding:10px 40px;border:none;background:var(--lavender);color:#fff;border-radius:20px;font-size:14px;cursor:pointer">关闭</button>
-    </div>`;
-  overlay.appendChild(panel);
-  document.body.appendChild(overlay);
-  $('#xhsDetailClose').onclick=()=>{document.body.removeChild(overlay)};
-  overlay.addEventListener('click',e=>{if(e.target===overlay)document.body.removeChild(overlay)});
-}
-
-$('#fundRefresh').onclick=async()=>{
-  $('#fundRefresh').textContent='⏳ 刷新中...';
-  await Promise.all([fetchSectors(),fetchNews(),fetchXhsHot()]);
-  renderFund();
-  toast('热点已刷新 🔥');
-  $('#fundRefresh').textContent='🔄 刷新';
-};
-
-(async function initFund(){
-  await Promise.all([fetchSectors(),fetchNews()]);
-  renderFund();
-})();
 
 /* ========== 3.5 今日运势 ========== */
 const weatherIcons=['☀️','🌤️','⛅','🌦️','🌧️','⛈️','🌩️','🌈'];
@@ -916,89 +704,7 @@ async function renderFortune(){
   $('#fortuneSoup').innerHTML=`<span class="quote">${soup.q}</span>${soup.t}`;
 }
 $('#fortuneRefresh').onclick=()=>{weatherCache=null;renderFortune()};
-renderFortune();
-
-/* ========== 4. 记账 ========== */
-// 固定3个账户：工商银行/支付宝/微信
-let accounts=LS.get('accounts',[
-  {name:'中国工商银行',icon:'🏦',balance:25000},
-  {name:'支付宝',icon:'💙',balance:3420.80},
-  {name:'微信',icon:'💚',balance:1280}
-]);
-// 自动迁移旧数据：如果账户里有招商/建设银行，替换为新账户
-if(accounts.some(a=>a.name&&(a.name.includes('招商')||a.name.includes('建设')))){
-  const oldBalances={};
-  accounts.forEach(a=>{if(a.name)oldBalances[a.name]=a.balance});
-  accounts=[
-    {name:'中国工商银行',icon:'🏦',balance:oldBalances['中国工商银行']||25000},
-    {name:'支付宝',icon:'💙',balance:oldBalances['支付宝']||3420.80},
-    {name:'微信',icon:'💚',balance:oldBalances['微信']||1280}
-  ];
-  saveAccounts();
-}
-let expenses=LS.get('expenses',[]);
-function saveAccounts(){LS.set('accounts',accounts)}function saveExpenses(){LS.set('expenses',expenses)}
-function thisMonth(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`}
-function isThisMonth(d){return d&&d.startsWith(thisMonth())}
-function renderMoney(){
-  const grid=$('#balanceGrid');grid.innerHTML='';let total=0;
-  accounts.forEach((a,i)=>{
-    total+=a.balance;
-    const div=document.createElement('div');
-    div.className='balance-item';
-    div.innerHTML=`
-      <div class="name">${a.icon} ${a.name}</div>
-      <div class="num" style="cursor:pointer" data-i="${i}">${fmtMoney(a.balance)}</div>
-      <div style="font-size:10px;color:var(--text-faint);margin-top:2px">点击修改</div>`;
-    grid.appendChild(div);
-  });
-  $('#totalAsset').textContent=fmtMoney(total);
-  $$('#balanceGrid .num').forEach(el=>el.onclick=()=>{
-    const i=+el.dataset.i;
-    const newVal=prompt(`修改「${accounts[i].name}」余额`,accounts[i].balance);
-    if(newVal!==null&&!isNaN(+newVal)&&+newVal>=0){
-      accounts[i].balance=+newVal;saveAccounts();renderMoney();toast('余额已更新');
-    }
-  });
-
-  const todaySpent=expenses.filter(e=>isToday(e.date)).reduce((s,e)=>s+e.amount,0);
-  const monthSpent=expenses.filter(e=>isThisMonth(e.date)).reduce((s,e)=>s+e.amount,0);
-  $('#todaySpent').textContent=fmtMoney(todaySpent);
-  $('#monthSpent').textContent=fmtMoney(monthSpent);
-  $('#monthTotal').textContent=fmtMoney(monthSpent);
-
-  const d=new Date();
-  $('#todayDateLabel').textContent=`${d.getMonth()+1}月${d.getDate()}日`;
-
-  const list=$('#expenseList');list.innerHTML='';
-  const todayExp=expenses.filter(e=>isToday(e.date)).reverse();
-  if(todayExp.length===0)list.innerHTML='<div class="empty">今天还没有消费记录，记一笔吧 📝</div>';
-  todayExp.forEach((e,i)=>{
-    const div=document.createElement('div');
-    div.className='expense-item';
-    div.innerHTML=`<div><div>${escapeHtml(e.note||'未命名')}</div></div><div style="display:flex;align-items:center;gap:8px"><span style="color:var(--danger);font-weight:600">-${fmtMoney(e.amount)}</span><span style="font-size:10px;color:var(--text-faint);cursor:pointer" data-del="${i}" class="del-exp">✕</span></div>`;
-    list.appendChild(div);
-  });
-  $$('#expenseList .del-exp').forEach(el=>el.onclick=()=>{
-    const idx=+el.dataset.del;
-    const allToday=expenses.map((e,i)=>isToday(e.date)?i:-1).filter(i=>i!==-1);
-    const realIdx=allToday[allToday.length-1-idx];
-    if(realIdx!==undefined){
-      expenses.splice(realIdx,1);
-      saveExpenses();renderMoney();
-      toast('已删除');
-    }
-  });
-}
-$('#expAdd').onclick=()=>{
-  const amt=+$('#expAmount').value;
-  if(!amt||amt<=0){toast('金额>0');return}
-  expenses.push({amount:amt,note:$('#expNote').value.trim(),date:today()});
-  saveExpenses();renderMoney();
-  $('#expAmount').value='';$('#expNote').value='';
-  toast('记账成功 💸');
-};
-renderMoney();
+renderFortune().then(()=>updateHome());
 
 /* ========== 5. 储蓄计划 ========== */
 let saveGoals=LS.get('saveGoals',null);
@@ -1013,7 +719,6 @@ if(!saveGoals||!Array.isArray(saveGoals)){
 }
 let saveCat='日常生活';
 function saveSaveGoals(){LS.set('saveGoals',saveGoals)}
-function fmtMoney(n){return '¥'+Number(n||0).toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2})}
 function renderSave(){
   // 总进度
   const totalGoal=saveGoals.reduce((s,g)=>s+Number(g.target||0),0);
@@ -1304,7 +1009,7 @@ switchTab('card-home');
 
 /* ========== 数据管理 ========== */
 function calcDataSize(){
-  const keys=['todos','myFunds_v2','accounts','expenses','saveGoals','lendRecs','diaries'];
+  const keys=['todos','saveGoals','lendRecs','diaries'];
   let total=0;keys.forEach(k=>{try{total+=JSON.stringify(LS.get(k,null)).length}catch(e){}});
   return total;
 }
@@ -1320,7 +1025,7 @@ function closeSettings(){$('#settingsOverlay').classList.remove('show')}
 $('#btnClose').onclick=closeSettings;
 $('#btnExport').onclick=()=>{
   const data={};
-  ['todos','myFunds_v2','accounts','expenses','saveGoals','lendRecs','diaries'].forEach(k=>data[k]=LS.get(k,null));
+  ['todos','saveGoals','lendRecs','diaries'].forEach(k=>data[k]=LS.get(k,null));
   const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);
   a.download='M生活踪迹_备份_'+today()+'.json';a.click();
@@ -1343,7 +1048,7 @@ $('#importFile').onchange=e=>{
 };
 $('#btnClearAll').onclick=()=>{
   if(confirm('⚠️ 确定要清除所有数据吗？\n\n包括：待办、持仓、账户、消费记录、健身打卡、小记\n\n此操作不可恢复！建议先导出备份。')){
-    ['todos','myFunds_v2','accounts','expenses','saveGoals','lendRecs','diaries'].forEach(k=>localStorage.removeItem(k));
+    ['todos','saveGoals','lendRecs','diaries'].forEach(k=>localStorage.removeItem(k));
     toast('已清除，即将刷新...');
     setTimeout(()=>location.reload(),800);
   }
