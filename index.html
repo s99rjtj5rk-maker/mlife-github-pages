@@ -769,7 +769,7 @@ const SAVE_ICONS=['⭐','🧸','🏠','✈️','🚗','🎓','💍','💻','📱
 let saveEditingId=null,savePickedIcon='⭐';
 function openGoalModal(id){
   saveEditingId=id||null;
-  const g=id?saveGoals.find(x=>x.id===id):{name:'',icon:'⭐',target:'',note:''};
+  const g=id?saveGoals.find(x=>x.id===id):{name:'',icon:'⭐',target:'',current:'',note:''};
   savePickedIcon=g.icon||'⭐';
   const mask=document.createElement('div');
   mask.className='save-modal-mask';
@@ -779,6 +779,10 @@ function openGoalModal(id){
       <div class="save-field">
         <div class="lbl">🎯 目标名称</div>
         <input id="sgName" placeholder="例如：买房首期" value="${escapeHtml(g.name||'')}">
+      </div>
+      <div class="save-field">
+        <div class="lbl">📥 已存入金额（元）</div>
+        <input id="sgCurrent" type="number" inputmode="decimal" placeholder="例如：5000" value="${g.current!==undefined&&g.current!==''?g.current:''}">
       </div>
       <div class="save-field">
         <div class="lbl">💰 目标金额（元）</div>
@@ -807,15 +811,17 @@ function openGoalModal(id){
   mask.querySelector('.save-modal-cancel').onclick=()=>document.body.removeChild(mask);
   mask.querySelector('.save-modal-ok').onclick=()=>{
     const name=document.getElementById('sgName').value.trim();
+    const current=parseFloat(document.getElementById('sgCurrent').value)||0;
     const target=parseFloat(document.getElementById('sgTarget').value)||0;
     const note=document.getElementById('sgNote').value.trim();
     if(!name){toast('请填写目标名称');return}
     if(target<=0){toast('请填写有效的目标金额');return}
+    if(current<0){toast('已存入金额不能为负');return}
     if(saveEditingId){
       const g2=saveGoals.find(x=>x.id===saveEditingId);
-      g2.name=name;g2.target=target;g2.note=note;g2.icon=savePickedIcon;
+      g2.name=name;g2.current=current;g2.target=target;g2.note=note;g2.icon=savePickedIcon;
     }else{
-      saveGoals.push({id:'g'+Date.now(),name,icon:savePickedIcon,target,current:0,note});
+      saveGoals.push({id:'g'+Date.now(),name,icon:savePickedIcon,target,current,note});
     }
     saveSaveGoals();renderSave();document.body.removeChild(mask);toast(saveEditingId?'目标已更新 ✏️':'目标已创建 🎉');
   };
