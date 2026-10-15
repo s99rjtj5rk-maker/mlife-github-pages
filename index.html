@@ -147,38 +147,59 @@ body{overflow:hidden}
 .expense-form input,.expense-form select{border:1px solid var(--border);border-radius:8px;padding:6px;font-size:12px;background:#fff}
 .expense-form button{grid-column:span 2;background:var(--blue);color:#fff;border:none;border-radius:8px;padding:8px;font-size:13px;cursor:pointer}
 
-/* 英语 */
-.en-tabs{display:flex;gap:5px;margin-bottom:8px;overflow-x:auto}
-.en-tabs::-webkit-scrollbar{display:none}
-.en-tab{padding:4px 10px;border-radius:8px;background:var(--peach-light);color:var(--text-soft);font-size:11px;white-space:nowrap;cursor:pointer}
-.en-tab.on{background:var(--peach);color:#fff}
-.en-card{background:linear-gradient(135deg,#FEF0E9,#FFF6F0);border-radius:12px;padding:12px;margin-bottom:6px}
-.en-en{font-size:15px;font-weight:600;color:var(--peach-dark);margin-bottom:4px}
-.en-zh{font-size:12px;color:var(--text-soft);margin-bottom:6px}
-.en-tip{font-size:10px;color:#B88860;background:#FFF7E6;padding:3px 8px;border-radius:6px;display:inline-block}
-.en-nav{display:flex;justify-content:space-between;margin-top:8px}
-.en-nav button{background:var(--peach);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer}
-.en-nav button:disabled{opacity:.4}
-.en-progress{text-align:center;font-size:11px;color:var(--text-faint);margin-top:4px}
+/* 储蓄计划 */
+.card-save{background:linear-gradient(160deg,#FFF6E0,#FFFBF0);border-radius:18px;padding:14px}
+.save-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.save-head-title{font-size:17px;font-weight:700;color:#C9A227}
+.save-cat-btn{background:#fff;border:none;border-radius:20px;padding:7px 14px;font-size:12px;color:#B8860B;font-weight:600;cursor:pointer;box-shadow:0 1px 4px rgba(201,162,39,.15)}
+.save-intro{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FFE9A8,#FFD97D);border-radius:16px;padding:14px 16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(255,193,7,.2)}
+.save-intro-icon{width:52px;height:52px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.save-intro-title{font-size:16px;font-weight:700;color:#8A6D1F;margin-bottom:3px}
+.save-intro-sub{font-size:11px;color:#B09455}
+.save-total{background:linear-gradient(135deg,#FFE9A8,#FFDD8F);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(255,193,7,.18)}
+.save-total-label{font-size:12px;color:#9C7C33;margin-bottom:6px}
+.save-total-amount{display:flex;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
+.save-total-cur{font-size:26px;font-weight:800;color:#6B5416}
+.save-total-goal{font-size:14px;font-weight:600;color:#A8894A}
+.save-bar{height:8px;background:rgba(255,255,255,.6);border-radius:4px;overflow:hidden}
+.save-bar-fill{height:100%;background:linear-gradient(90deg,#FFC02E,#F5A623);border-radius:4px;transition:width .4s}
+.save-total-pct{font-size:11px;color:#9C7C33;text-align:right;margin-top:5px}
+.save-goals-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.save-goals-title{font-size:14px;font-weight:700;color:#C9A227}
+.save-add-goal{background:#fff;border:1.5px dashed #F0C674;border-radius:20px;padding:6px 14px;font-size:12px;color:#C9A227;font-weight:600;cursor:pointer}
+.save-goal{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px;margin-bottom:10px;box-shadow:0 1px 5px rgba(201,162,39,.1)}
+.save-goal-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#FFF3D6,#FFE9B0);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.save-goal-main{flex:1;min-width:0}
+.save-goal-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;word-break:break-all}
+.save-goal-sub{font-size:11px;color:var(--text-faint);margin-bottom:6px}
+.save-goal-sub b{color:#C9A227;font-weight:600}
+.save-goal-bar{height:6px;background:#F5F0E3;border-radius:3px;overflow:hidden}
+.save-goal-bar-fill{height:100%;background:linear-gradient(90deg,#FFD24D,#F5A623);border-radius:3px;transition:width .4s}
+.save-goal-pct{font-size:11px;color:#C9A227;font-weight:600;margin-left:8px;min-width:34px;text-align:right}
+.save-goal-acts{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.save-goal-btns{display:flex;gap:5px}
+.save-mini-btn{width:26px;height:26px;border-radius:8px;border:none;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.save-btn-add{background:#FFF3D6}
+.save-btn-edit{background:#FFF9E6}
+.save-btn-del{background:#FFE8E8}
+.save-goal-pct-wrap{display:flex;align-items:center;justify-content:space-between;margin-top:5px}
 
-/* 健身 */
-.fit-tabs{display:flex;gap:5px;margin-bottom:8px;overflow-x:auto}
-.fit-tabs::-webkit-scrollbar{display:none}
-.fit-tab{padding:4px 10px;border-radius:8px;background:var(--mint-light);color:var(--text-soft);font-size:11px;white-space:nowrap;cursor:pointer}
-.fit-tab.on{background:var(--mint);color:#fff}
-.fit-video{background:#F6FAF7;border-radius:12px;padding:12px;margin-bottom:8px}
-.fit-video .name{font-size:13px;font-weight:600;margin-bottom:4px}
-.fit-video .target{font-size:11px;color:var(--mint-dark);margin-bottom:6px}
-.fit-video .desc{font-size:11px;color:var(--text-soft);line-height:1.6}
-.fit-video .steps{margin-top:8px;padding:8px;background:#fff;border-radius:8px;font-size:11px;color:var(--text-soft)}
-.fit-video .steps ol{padding-left:18px;margin-top:4px}
-.fit-video .steps li{margin-bottom:2px}
-.fit-check{display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding:6px 10px;background:var(--mint-light);border-radius:8px;font-size:11px}
-.fit-check.on{background:#D6E6BD}
-.fit-check .act{color:var(--mint-dark);font-weight:600;cursor:pointer}
-.fit-progress{height:6px;background:#EAEDE3;border-radius:3px;margin-top:8px;overflow:hidden}
-.fit-progress-bar{height:100%;background:linear-gradient(90deg,var(--mint),var(--mint-dark));transition:width .3s}
-.fit-video-link{display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px;background:linear-gradient(135deg,#FF5A5F,#E03E42);color:#fff;font-size:12px;text-decoration:none;cursor:pointer;justify-content:center;font-weight:500}
+/* 储蓄弹窗 */
+.save-modal-mask{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px}
+.save-modal{background:#fff;border-radius:18px;padding:20px;width:100%;max-width:380px;max-height:85vh;overflow-y:auto}
+.save-modal h3{font-size:16px;color:#C9A227;margin-bottom:16px;text-align:center}
+.save-field{margin-bottom:14px}
+.save-field .lbl{font-size:12px;color:var(--text-soft);margin-bottom:5px;font-weight:500}
+.save-field input{width:100%;border:1px solid var(--border);border-radius:10px;padding:10px;font-size:14px;font-family:inherit;background:#FFFDF7}
+.save-field input:focus{outline:none;border-color:#F0C674}
+.save-icon-pick{display:flex;gap:8px;flex-wrap:wrap}
+.save-icon-opt{width:40px;height:40px;border-radius:10px;border:2px solid var(--border);background:#FFFDF7;font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.save-icon-opt.on{border-color:#F5A623;background:#FFF3D6}
+.save-modal-btns{display:flex;gap:10px;margin-top:18px}
+.save-modal-btns button{flex:1;padding:11px;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer}
+.save-modal-cancel{background:#F5F0E3;color:var(--text-soft)}
+.save-modal-ok{background:linear-gradient(135deg,#FFD24D,#F5A623);color:#fff}
+.save-empty{text-align:center;font-size:12px;color:var(--text-faint);padding:20px}
 
 /* 小记 */
 .diary-mood{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
@@ -231,8 +252,7 @@ body{overflow:hidden}
   <div class="side-tab" data-target="card-fund"><div class="ico">🔥</div>今日热点</div>
   <div class="side-tab" data-target="card-fortune"><div class="ico">🔮</div>运势</div>
   <div class="side-tab" data-target="card-money"><div class="ico">💰</div>记账</div>
-  <div class="side-tab" data-target="card-english"><div class="ico">🗣️</div>英语</div>
-  <div class="side-tab" data-target="card-fit"><div class="ico">💪</div>健身</div>
+  <div class="side-tab" data-target="card-save"><div class="ico">⭐</div>储蓄</div>
   <div class="side-tab" data-target="card-diary"><div class="ico">📓</div>小记</div>
 </div>
 
@@ -275,15 +295,10 @@ body{overflow:hidden}
         <div class="name">记账本</div>
         <div class="brief" id="homeMoney">总资产 ¥0</div>
       </div>
-      <div class="home-tile tile-peach" data-goto="card-english">
-        <div class="icon">🗣️</div>
-        <div class="name">每日英语</div>
-        <div class="brief">旅行短句</div>
-      </div>
-      <div class="home-tile tile-coral" data-goto="card-fit">
-        <div class="icon">💪</div>
-        <div class="name">健身计划</div>
-        <div class="brief" id="homeFit">拉力绳练背</div>
+      <div class="home-tile tile-coral" data-goto="card-save" style="grid-column:span 2">
+        <div class="icon">⭐</div>
+        <div class="name">储蓄计划</div>
+        <div class="brief" id="homeSave">小星星一颗颗攒成大目标</div>
       </div>
       <div class="home-tile tile-yellow" data-goto="card-diary" style="grid-column:span 2">
         <div class="icon">📓</div>
@@ -387,31 +402,39 @@ body{overflow:hidden}
   </div>
 
   <!-- 5 英语 -->
-  <div class="card" id="card-english" style="display:none">
-    <div class="card-head">
-      <div class="card-title"><div class="ico ico-peach">🗣️</div>每日英语 · 旅行短句</div>
-      <div class="card-action" id="enSpeak">🔊 朗读</div>
+  <!-- 5 储蓄计划 -->
+  <div class="card card-save" id="card-save" style="display:none">
+    <div class="save-head">
+      <div class="save-head-title">⭐ 储蓄计划</div>
+      <button class="save-cat-btn" id="saveCatBtn">🏠 日常生活 ▾</button>
     </div>
-    <div class="en-tabs" id="enTabs"></div>
-    <div id="enCard"></div>
-    <div class="en-nav">
-      <button id="enPrev">← 上一句</button>
-      <div class="en-progress" id="enProgress">1/10</div>
-      <button id="enNext">下一句 →</button>
-    </div>
-  </div>
 
-  <!-- 6 健身 -->
-  <div class="card" id="card-fit" style="display:none">
-    <div class="card-head">
-      <div class="card-title"><div class="ico ico-mint">💪</div>健身计划 · 拉力绳练背</div>
-      <div class="card-action" id="fitDone">完成今日</div>
+    <!-- 储蓄计划介绍卡片 -->
+    <div class="save-intro">
+      <div class="save-intro-icon">🐥</div>
+      <div>
+        <div class="save-intro-title">储蓄计划</div>
+        <div class="save-intro-sub">小星星一颗颗攒成大目标</div>
+      </div>
     </div>
-    <div class="fit-tabs" id="fitTabs"></div>
-    <div id="fitList"></div>
-    <div class="section-title">今日完成度</div>
-    <div class="fit-progress"><div class="fit-progress-bar" id="fitBar" style="width:0%"></div></div>
-    <div style="text-align:center;font-size:11px;color:var(--text-soft);margin-top:4px" id="fitText">0%</div>
+
+    <!-- 总进度 -->
+    <div class="save-total">
+      <div class="save-total-label">总进度</div>
+      <div class="save-total-amount">
+        <span class="save-total-cur" id="saveTotalCur">¥0.00</span>
+        <span class="save-total-goal"> / <span id="saveTotalGoal">¥0.00</span></span>
+      </div>
+      <div class="save-bar"><div class="save-bar-fill" id="saveTotalBar" style="width:0%"></div></div>
+      <div class="save-total-pct" id="saveTotalPct">0%</div>
+    </div>
+
+    <!-- 攒钱目标列表 -->
+    <div class="save-goals-head">
+      <div class="save-goals-title">⭐ 攒钱目标</div>
+      <button class="save-add-goal" id="saveAddGoal">+ 新增目标</button>
+    </div>
+    <div id="saveGoalList"></div>
   </div>
 
   <!-- 7 小记 -->
@@ -492,9 +515,14 @@ function updateHome(){
   const total=accounts.reduce((s,a)=>s+a.balance,0);
   $('#homeMoney').textContent=fmtMoney(total);
   const dateKey=today();
-  const fdone=Object.values(fitPlans).flatMap((p,pi)=>p.map((_,i)=>Object.keys(fitPlans)[pi]+'-'+i)).filter(k=>(fitDone[dateKey]||{})[k]).length;
-  const ftotal=Object.values(fitPlans).flat().length;
-  $('#homeFit').textContent=`今日 ${fdone}/${ftotal}`;
+  // 储蓄计划摘要
+  try{
+    const sg=LS.get('saveGoals',[]);
+    const tg=sg.reduce((s,g)=>s+Number(g.target||0),0);
+    const tc=sg.reduce((s,g)=>s+Number(g.current||0),0);
+    const pct=tg?Math.round(tc/tg*100):0;
+    if($('#homeSave'))$('#homeSave').textContent=sg.length?`${pct}% · ${fmtMoney(tc)}`:'还没有目标，去添加吧 ✨';
+  }catch(e){}
   $('#homeFortune').textContent=`金牛座 · ${fortuneLucky[0]}`;
   $('#homeDiary').textContent=diaries[dateKey]?`今日已记录 ${diaries[dateKey].mood}`:'今天还没写小记呢 📝';
 }
@@ -893,27 +921,169 @@ $('#expAdd').onclick=()=>{
 };
 renderMoney();
 
-/* ========== 5. 英语 ========== */
-const enData={'机场':[{en:"Where is the check-in counter?",zh:"值机柜台在哪里？",tip:"check-in /ˈtʃek ɪn/"},{en:"I have one suitcase to check in.",zh:"我有一个行李箱要托运。",tip:"suitcase /ˈsuːtkeɪs/"},{en:"Is my flight on time?",zh:"我的航班准点吗？",tip:"on time 准点"},{en:"Could I have a window seat?",zh:"能给我靠窗座位吗？",tip:"window seat"},{en:"Where is gate B12?",zh:"B12登机口在哪？",tip:"gate 登机口"},{en:"I missed my flight.",zh:"我错过了航班。",tip:"miss 错过"}],'酒店':[{en:"I have a reservation under Wang.",zh:"我有个预订，姓王。",tip:"reservation 预订"},{en:"Could I have an extra towel?",zh:"能多给条毛巾吗？",tip:"towel /ˈtaʊəl/"},{en:"What time is checkout?",zh:"几点退房？",tip:"checkout 退房"},{en:"Is breakfast included?",zh:"含早餐吗？",tip:"include 包含"},{en:"The air conditioning doesn't work.",zh:"空调坏了。",tip:"air conditioning"},{en:"Could you wake me at 7?",zh:"7点能叫醒我吗？",tip:"wake 叫醒"}],'餐厅':[{en:"Could I see the menu, please?",zh:"请给我看一下菜单。",tip:"menu /ˈmenjuː/"},{en:"I'd like this one, please.",zh:"我想要这个。",tip:"I'd like = I would like"},{en:"I'm allergic to peanuts.",zh:"我对花生过敏。",tip:"allergic 过敏"},{en:"Could I have the bill?",zh:"能买单吗？",tip:"bill 账单"},{en:"Is tap water safe to drink?",zh:"自来水能喝吗？",tip:"tap water 自来水"},{en:"It was delicious!",zh:"很好吃！",tip:"delicious 美味的"}],'交通':[{en:"How much is the fare?",zh:"车费多少？",tip:"fare 费用"},{en:"Please take me to this address.",zh:"请送我去这个地址。",tip:"take sb to"},{en:"Could you call a taxi for me?",zh:"能帮我叫辆出租车吗？",tip:"taxi 出租车"},{en:"Does this bus go to the city center?",zh:"这趟公交到市中心吗？",tip:"city center"},{en:"I'd like to rent a car.",zh:"我想租车。",tip:"rent 租"},{en:"Stop here, please.",zh:"请停这里。",tip:"stop 停"}],'购物':[{en:"How much is this?",zh:"这个多少钱？",tip:"最常用！"},{en:"Could I try this on?",zh:"能试穿一下吗？",tip:"try on 试穿"},{en:"Do you have a smaller size?",zh:"有小一号的吗？",tip:"size 尺码"},{en:"Do you accept credit cards?",zh:"接受信用卡吗？",tip:"credit card"},{en:"Can you give me a discount?",zh:"能便宜点吗？",tip:"discount 折扣"},{en:"I'll take it.",zh:"我买了。",tip:"take 买下"}],'求助':[{en:"Excuse me, I'm lost.",zh:"不好意思，我迷路了。",tip:"lost 迷路"},{en:"Could you help me?",zh:"您能帮我吗？",tip:"help 帮助"},{en:"Where is the nearest hospital?",zh:"最近的医院在哪？",tip:"nearest"},{en:"I need a doctor.",zh:"我需要医生。",tip:"紧急必备"},{en:"Call the police, please.",zh:"请报警。",tip:"police 警察"},{en:"Do you speak Chinese?",zh:"你说中文吗？",tip:"万能句"}]};
-let enCategory='机场',enIdx=0;
-function renderEn(){const tabs=$('#enTabs');tabs.innerHTML='';Object.keys(enData).forEach(c=>{const d=document.createElement('div');d.className='en-tab'+(c===enCategory?' on':'');d.textContent=c;d.dataset.c=c;tabs.appendChild(d)});$$('#enTabs .en-tab').forEach(t=>t.onclick=()=>{enCategory=t.dataset.c;enIdx=0;renderEn()});const cur=enData[enCategory][enIdx];$('#enCard').innerHTML=`<div class="en-card"><div class="en-en">${cur.en}</div><div class="en-zh">${cur.zh}</div><div class="en-tip">💡 ${cur.tip}</div></div>`;$('#enProgress').textContent=`${enIdx+1}/${enData[enCategory].length}`;$('#enPrev').disabled=enIdx===0;$('#enNext').disabled=enIdx===enData[enCategory].length-1}
-$('#enPrev').onclick=()=>{if(enIdx>0){enIdx--;renderEn()}};$('#enNext').onclick=()=>{if(enIdx<enData[enCategory].length-1){enIdx++;renderEn()}};
-$('#enSpeak').onclick=()=>{const u=new SpeechSynthesisUtterance(enData[enCategory][enIdx].en);u.lang='en-US';u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)};
-renderEn();
-
-/* ========== 6. 健身 ========== */
-const fitPlans={'拉力绳练背':[{name:'高位下拉',target:'背阔肌上侧',desc:'把拉力绳固定在高处，双手握把，身体微微后倾。',steps:['弹力带挂在门框或高处','双手正握把手，间距比肩宽','发力将手肘拉向腰侧，挤压肩胛','缓慢回到起始位置'],xhs:'弹力带高位下拉 教学'},{name:'坐姿划船',target:'背阔肌中部',desc:'坐在地上，双腿伸直踩住弹力带一端。',steps:['坐姿双腿伸直，弹力带绕过脚底','双手握把，膝盖微弯','挺胸拉向腹部，肘部夹紧','慢放，感受到背部拉伸'],xhs:'弹力带坐姿划船 教程'},{name:'单臂下拉',target:'背阔肌单侧',desc:'单手握把，强化左右背对称。',steps:['弹力带固定于头顶','单手正握，另一手扶墙','向髋部方向下拉','左右各12次'],xhs:'弹力带单臂下拉 练背'},{name:'俯身飞鸟',target:'上背+后束',desc:'俯身站立，弹力带绕过身体前方。改善圆肩，强化上背。',steps:['双脚踩住弹力带中段','俯身45度，背部挺直','双手向两侧打开，挤压肩胛','保持2秒再慢放'],xhs:'弹力带俯身飞鸟 教学'},{name:'直臂下压',target:'背阔肌下侧',desc:'站立位，直臂向下压。',steps:['弹力带固定于上方','双手握把，手臂伸直微屈','直臂下压至大腿前侧','挤压背阔肌1秒'],xhs:'弹力带直臂下压 练背'}],'热身':[{name:'肩部环绕',target:'肩关节',desc:'活动开肩关节，避免拉伤。',steps:['双手自然下垂','肩部向前绕环10次','向后绕环10次'],xhs:'肩部环绕 热身运动'},{name:'猫牛式',target:'整条脊柱',desc:'活动脊柱，激活核心。',steps:['四足跪姿','吸气塌腰抬头','呼气拱背低头','10次'],xhs:'猫牛式 热身 瑜伽'}],'拉伸':[{name:'婴儿式',target:'背阔肌拉伸',desc:'练完后做这个可以缓解背部紧张。',steps:['跪坐于脚踝上','身体前倾，双手向前延伸','保持30秒，均匀呼吸'],xhs:'婴儿式拉伸 背部放松'},{name:'猫式侧拉',target:'侧背拉伸',desc:'左右各做一次。',steps:['四足跪姿','右手穿过身体向左','左肩着地，保持30秒','换边'],xhs:'猫式拉伸 背部放松'}]};
-let fitDone=LS.get('fitDone',{}),fitCat='拉力绳练背';
-function saveFitDone(){LS.set('fitDone',fitDone)}
-function renderFit(){
-  const tabs=$('#fitTabs');tabs.innerHTML='';Object.keys(fitPlans).forEach(p=>{const d=document.createElement('div');d.className='fit-tab'+(p===fitCat?' on':'');d.textContent=p;d.dataset.p=p;tabs.appendChild(d)});$$('#fitTabs .fit-tab').forEach(t=>t.onclick=()=>{fitCat=t.dataset.p;renderFit()});
-  const list=$('#fitList'),plans=fitPlans[fitCat],dateKey=today();if(!fitDone[dateKey])fitDone[dateKey]={};list.innerHTML='';
-  plans.forEach((p,i)=>{const key=fitCat+'-'+i,done=fitDone[dateKey][key];const div=document.createElement('div');div.className='fit-video';div.innerHTML=`<div class="name">${i+1}. ${p.name} ${done?'✅':''}</div><div class="target">🎯 目标肌群：${p.target}</div><div class="desc">${p.desc}</div><a class="fit-video-link" href="${encodeURI('https://www.xiaohongshu.com/search_result?keyword='+p.xhs+'&source=unknown')}" target="_blank" rel="noopener" onclick="event.preventDefault();window.open(this.href,'_blank','noopener,noreferrer')||(location.href=this.href)">🔴 在小红书查看教学视频 →</a><div class="steps"><b>动作要领：</b><ol>${p.steps.map(s=>`<li>${s}</li>`).join('')}</ol></div><div class="fit-check ${done?'on':''}"><span>${done?'已完成 💪':'今日打卡'}</span><span class="act" data-key="${key}">${done?'撤销':'✓ 完成'}</span></div>`;list.appendChild(div)});
-  $$('#fitList .act').forEach(a=>a.onclick=()=>{const k=a.dataset.key;if(fitDone[dateKey][k])delete fitDone[dateKey][k];else fitDone[dateKey][k]=true;saveFitDone();renderFit()});
-  const total=plans.length,done=plans.filter((p,i)=>fitDone[dateKey][fitCat+'-'+i]).length,pct=total?Math.round(done/total*100):0;$('#fitBar').style.width=pct+'%';$('#fitText').textContent=`${done}/${total} · ${pct}%`;
+/* ========== 5. 储蓄计划 ========== */
+let saveGoals=LS.get('saveGoals',null);
+if(!saveGoals||!Array.isArray(saveGoals)){
+  // 首次使用：预置示例目标（内容可自定义）
+  saveGoals=[
+    {id:'g1',name:'备用金',icon:'🧸',target:30000,current:0,note:'应对突发情况的安心钱'},
+    {id:'g2',name:'买房首期',icon:'🏠',target:150000,current:0,note:'属于自己的小窝'},
+    {id:'g3',name:'旅行基金',icon:'✈️',target:20000,current:1200,note:'去看看世界'},
+  ];
+  LS.set('saveGoals',saveGoals);
 }
-$('#fitDone').onclick=()=>{const dateKey=today(),allKeys=Object.values(fitPlans).flatMap((p,pi)=>p.map((_,i)=>Object.keys(fitPlans)[pi]+'-'+i)),done=allKeys.filter(k=>fitDone[dateKey][k]).length;toast(`今日已完成${done}/${allKeys.length}个动作 💪`)};
-renderFit();
+let saveCat='日常生活';
+function saveSaveGoals(){LS.set('saveGoals',saveGoals)}
+function fmtMoney(n){return '¥'+Number(n||0).toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function renderSave(){
+  // 总进度
+  const totalGoal=saveGoals.reduce((s,g)=>s+Number(g.target||0),0);
+  const totalCur=saveGoals.reduce((s,g)=>s+Number(g.current||0),0);
+  const pct=totalGoal?Math.round(totalCur/totalGoal*100):0;
+  $('#saveTotalCur').textContent=fmtMoney(totalCur);
+  $('#saveTotalGoal').textContent=fmtMoney(totalGoal);
+  $('#saveTotalBar').style.width=Math.min(pct,100)+'%';
+  $('#saveTotalPct').textContent=pct+'%';
+  // 首页摘要
+  const homeSave=document.getElementById('homeSave');
+  if(homeSave)homeSave.textContent=pct+'% · '+fmtMoney(totalCur);
+  // 目标列表
+  const list=$('#saveGoalList');list.innerHTML='';
+  if(saveGoals.length===0){list.innerHTML='<div class="save-empty">还没有攒钱目标，点右上角「+ 新增目标」开始吧 ✨</div>';return}
+  saveGoals.forEach(g=>{
+    const gp=g.target?Math.round(Number(g.current||0)/Number(g.target)*100):0;
+    const div=document.createElement('div');
+    div.className='save-goal';
+    div.innerHTML=`
+      <div class="save-goal-icon">${g.icon||'⭐'}</div>
+      <div class="save-goal-main">
+        <div class="save-goal-name">${escapeHtml(g.name||'未命名目标')}</div>
+        <div class="save-goal-sub">已攒 <b>${fmtMoney(g.current)}</b> / ${fmtMoney(g.target)}</div>
+        <div class="save-goal-bar"><div class="save-goal-bar-fill" style="width:${Math.min(gp,100)}%"></div></div>
+      </div>
+      <div class="save-goal-acts">
+        <div class="save-goal-pct" style="margin-left:0">${gp}%</div>
+        <div class="save-goal-btns">
+          <button class="save-mini-btn save-btn-add" data-add="${g.id}" title="记录存钱">💰</button>
+          <button class="save-mini-btn save-btn-edit" data-edit="${g.id}" title="编辑">✏️</button>
+          <button class="save-mini-btn save-btn-del" data-del="${g.id}" title="删除">🗑️</button>
+        </div>
+      </div>`;
+    list.appendChild(div);
+  });
+  // 事件绑定
+  $$('#saveGoalList [data-add]').forEach(b=>b.onclick=()=>openAddMoney(b.dataset.add));
+  $$('#saveGoalList [data-edit]').forEach(b=>b.onclick=()=>openGoalModal(b.dataset.edit));
+  $$('#saveGoalList [data-del]').forEach(b=>b.onclick=()=>{
+    const g=saveGoals.find(x=>x.id===b.dataset.del);
+    if(confirm(`删除目标「${g.name}」？`)){saveGoals=saveGoals.filter(x=>x.id!==b.dataset.del);saveSaveGoals();renderSave();toast('已删除')}
+  });
+}
+
+/* 目标编辑弹窗（新增/修改） */
+const SAVE_ICONS=['⭐','🧸','🏠','✈️','🚗','🎓','💍','💻','📱','🎁','🐥','🌟'];
+let saveEditingId=null,savePickedIcon='⭐';
+function openGoalModal(id){
+  saveEditingId=id||null;
+  const g=id?saveGoals.find(x=>x.id===id):{name:'',icon:'⭐',target:'',note:''};
+  savePickedIcon=g.icon||'⭐';
+  const mask=document.createElement('div');
+  mask.className='save-modal-mask';
+  mask.innerHTML=`
+    <div class="save-modal">
+      <h3>${id?'编辑目标':'新增攒钱目标'}</h3>
+      <div class="save-field">
+        <div class="lbl">🎯 目标名称</div>
+        <input id="sgName" placeholder="例如：买房首期" value="${escapeHtml(g.name||'')}">
+      </div>
+      <div class="save-field">
+        <div class="lbl">💰 目标金额（元）</div>
+        <input id="sgTarget" type="number" inputmode="decimal" placeholder="例如：150000" value="${g.target||''}">
+      </div>
+      <div class="save-field">
+        <div class="lbl">🎨 选择图标</div>
+        <div class="save-icon-pick" id="sgIcons">
+          ${SAVE_ICONS.map(ic=>`<div class="save-icon-opt${ic===savePickedIcon?' on':''}" data-ic="${ic}">${ic}</div>`).join('')}
+        </div>
+      </div>
+      <div class="save-field">
+        <div class="lbl">📝 备注（选填）</div>
+        <input id="sgNote" placeholder="给自己一句话" value="${escapeHtml(g.note||'')}">
+      </div>
+      <div class="save-modal-btns">
+        <button class="save-modal-cancel">取消</button>
+        <button class="save-modal-ok">${id?'保存':'创建'}</button>
+      </div>
+    </div>`;
+  document.body.appendChild(mask);
+  mask.querySelectorAll('.save-icon-opt').forEach(el=>el.onclick=()=>{
+    savePickedIcon=el.dataset.ic;
+    mask.querySelectorAll('.save-icon-opt').forEach(x=>x.classList.toggle('on',x.dataset.ic===savePickedIcon));
+  });
+  mask.querySelector('.save-modal-cancel').onclick=()=>document.body.removeChild(mask);
+  mask.querySelector('.save-modal-ok').onclick=()=>{
+    const name=document.getElementById('sgName').value.trim();
+    const target=parseFloat(document.getElementById('sgTarget').value)||0;
+    const note=document.getElementById('sgNote').value.trim();
+    if(!name){toast('请填写目标名称');return}
+    if(target<=0){toast('请填写有效的目标金额');return}
+    if(saveEditingId){
+      const g2=saveGoals.find(x=>x.id===saveEditingId);
+      g2.name=name;g2.target=target;g2.note=note;g2.icon=savePickedIcon;
+    }else{
+      saveGoals.push({id:'g'+Date.now(),name,icon:savePickedIcon,target,current:0,note});
+    }
+    saveSaveGoals();renderSave();document.body.removeChild(mask);toast(saveEditingId?'目标已更新 ✏️':'目标已创建 🎉');
+  };
+  mask.addEventListener('click',e=>{if(e.target===mask)document.body.removeChild(mask)});
+}
+
+/* 记录存钱弹窗 */
+function openAddMoney(id){
+  const g=saveGoals.find(x=>x.id===id);if(!g)return;
+  const mask=document.createElement('div');
+  mask.className='save-modal-mask';
+  mask.innerHTML=`
+    <div class="save-modal">
+      <h3>💰 记录存钱 · ${escapeHtml(g.name)}</h3>
+      <div class="save-field">
+        <div class="lbl">本次存入金额（元）</div>
+        <input id="saAmt" type="number" inputmode="decimal" placeholder="例如：500" autofocus>
+      </div>
+      <div class="save-field">
+        <div class="lbl">备注（选填）</div>
+        <input id="saNote" placeholder="例如：本月结余">
+      </div>
+      <div style="font-size:12px;color:var(--text-faint);text-align:center">当前已攒 ${fmtMoney(g.current)} / ${fmtMoney(g.target)}</div>
+      <div class="save-modal-btns">
+        <button class="save-modal-cancel">取消</button>
+        <button class="save-modal-ok">确认存入</button>
+      </div>
+    </div>`;
+  document.body.appendChild(mask);
+  setTimeout(()=>{const el=document.getElementById('saAmt');if(el)el.focus()},100);
+  mask.querySelector('.save-modal-cancel').onclick=()=>document.body.removeChild(mask);
+  mask.querySelector('.save-modal-ok').onclick=()=>{
+    const amt=parseFloat(document.getElementById('saAmt').value);
+    if(!amt||amt<=0){toast('请输入有效金额');return}
+    g.current=Number(g.current||0)+amt;
+    saveSaveGoals();renderSave();document.body.removeChild(mask);
+    const left=Number(g.target||0)-g.current;
+    toast(left>0?`存入 ${fmtMoney(amt)}，还差 ${fmtMoney(left)} 💪`:`目标达成！${g.name} 🎉`);
+  };
+  mask.addEventListener('click',e=>{if(e.target===mask)document.body.removeChild(mask)});
+}
+
+$('#saveAddGoal').onclick=()=>openGoalModal(null);
+$('#saveCatBtn').onclick=()=>{
+  const cats=['日常生活','旅游出行','学习成长','健康医疗','大件购物'];
+  const idx=cats.indexOf(saveCat);
+  saveCat=cats[(idx+1)%cats.length];
+  $('#saveCatBtn').textContent='🏠 '+saveCat+' ▾';
+  toast('已切换到「'+saveCat+'」');
+};
+renderSave();
+
 
 /* ========== 7. 小记 ========== */
 let diaries=LS.get('diaries',{}),diaryMood='😊';
@@ -935,7 +1105,7 @@ switchTab('card-home');
 
 /* ========== 数据管理 ========== */
 function calcDataSize(){
-  const keys=['todos','myFunds_v2','accounts','expenses','fitDone','diaries'];
+  const keys=['todos','myFunds_v2','accounts','expenses','saveGoals','diaries'];
   let total=0;keys.forEach(k=>{try{total+=JSON.stringify(LS.get(k,null)).length}catch(e){}});
   return total;
 }
@@ -951,7 +1121,7 @@ function closeSettings(){$('#settingsOverlay').classList.remove('show')}
 $('#btnClose').onclick=closeSettings;
 $('#btnExport').onclick=()=>{
   const data={};
-  ['todos','myFunds_v2','accounts','expenses','fitDone','diaries'].forEach(k=>data[k]=LS.get(k,null));
+  ['todos','myFunds_v2','accounts','expenses','saveGoals','diaries'].forEach(k=>data[k]=LS.get(k,null));
   const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);
   a.download='M生活踪迹_备份_'+today()+'.json';a.click();
@@ -974,7 +1144,7 @@ $('#importFile').onchange=e=>{
 };
 $('#btnClearAll').onclick=()=>{
   if(confirm('⚠️ 确定要清除所有数据吗？\n\n包括：待办、持仓、账户、消费记录、健身打卡、小记\n\n此操作不可恢复！建议先导出备份。')){
-    ['todos','myFunds_v2','accounts','expenses','fitDone','diaries'].forEach(k=>localStorage.removeItem(k));
+    ['todos','myFunds_v2','accounts','expenses','saveGoals','diaries'].forEach(k=>localStorage.removeItem(k));
     toast('已清除，即将刷新...');
     setTimeout(()=>location.reload(),800);
   }
